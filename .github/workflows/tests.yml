@@ -1,0 +1,28 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python -m rtlab validate --sets 1000 --seed 7
+
+  c-jitter-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with warnings as errors
+        run: gcc -std=gnu11 -O2 -Wall -Wextra -Werror -o jitter linux_jitter/jitter.c -lpthread
+      - name: Thread and address sanitizers
+        run: |
+          gcc -std=gnu11 -g -fsanitize=thread -o jitter_tsan linux_jitter/jitter.c -lpthread
+          ./jitter_tsan --period-us 20000 --seconds 2 --load 2 > /dev/null
+          gcc -std=gnu11 -g -fsanitize=address,undefined -o jitter_asan linux_jitter/jitter.c -lpthread
+          ./jitter_asan --period-us 20000 --seconds 2 --load 2 > /dev/null
