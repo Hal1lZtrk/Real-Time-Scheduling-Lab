@@ -1,6 +1,6 @@
 # Real-Time Scheduling Lab
 
-[![tests](https://github.com/Hal1lZtrk/realtime-scheduling-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/Hal1lZtrk/realtime-scheduling-lab/actions/workflows/tests.yml)
+[![tests](https://github.com/Hal1lZtrk/Real-Time-Scheduling-Lab/actions/workflows/tests.yml/badge.svg)](https://github.com/Hal1lZtrk/Real-Time-Scheduling-Lab/actions/workflows/tests.yml)
 
 **A small Python lab that answers one question: will my periodic tasks meet their deadlines?** It analyses a task set with the classic real-time theory, simulates it tick by tick, and checks that both answers agree on thousands of random task sets.
 
@@ -27,9 +27,8 @@ A PLC runs cyclic task classes (for example a fast motion class, a medium contro
 ## Quick start
 
 ```bash
-git clone https://github.com/Hal1lZtrk/realtime-scheduling-lab.git
-cd realtime-scheduling-lab
-pip install -r requirements.txt
+git clone https://github.com/Hal1lZtrk/Real-Time-Scheduling-Lab.git
+cd Real-Time-Scheduling-Lab
 
 python -m pytest -q                                   # 27 tests
 python -m rtlab analyze  examples/rm_vs_edf.json
