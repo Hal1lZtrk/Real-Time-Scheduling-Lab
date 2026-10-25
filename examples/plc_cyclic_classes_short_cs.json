@@ -1,0 +1,11 @@
+{
+  "_comment": "Same task classes, but logging copies the data out in a 0.5 ms critical section (1 tick).",
+  "tasks": [
+    {"name": "motion",  "period": 4,   "segments": [{"resource": "buf", "duration": 1}]},
+    {"name": "control", "period": 20,  "wcet": 4},
+    {"name": "logging", "period": 200, "segments": [
+      {"resource": null,  "duration": 10},
+      {"resource": "buf", "duration": 1},
+      {"resource": null,  "duration": 19}]}
+  ]
+}

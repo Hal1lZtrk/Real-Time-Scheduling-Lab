@@ -1,0 +1,11 @@
+{
+  "_comment": "Illustrative PLC-style cyclic task classes, 1 tick = 0.5 ms. Logging holds a shared buffer for 3 ms (6 ticks).",
+  "tasks": [
+    {"name": "motion",  "period": 4,   "segments": [{"resource": "buf", "duration": 1}]},
+    {"name": "control", "period": 20,  "wcet": 4},
+    {"name": "logging", "period": 200, "segments": [
+      {"resource": null,  "duration": 10},
+      {"resource": "buf", "duration": 6},
+      {"resource": null,  "duration": 14}]}
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "_comment": "U = 0.971. Above the RM utilization bound, RM misses a deadline, EDF does not.",
+  "tasks": [
+    {"name": "tau1", "period": 5, "wcet": 2},
+    {"name": "tau2", "period": 7, "wcet": 4}
+  ]
+}
